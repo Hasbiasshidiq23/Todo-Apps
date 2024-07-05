@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\TodoCategoryController;
+use App\Models\TodoCategory;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
@@ -18,7 +20,7 @@ use App\Http\Controllers\TodoListController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('dashboard.index');
 });
 
 Route::get('/about', function () {
@@ -31,12 +33,26 @@ Route::prefix('user')->group(function () {
     Route::post('/login/auth', [UserController::class, 'loginAuth']);
     Route::post('/register/store', [UserController::class, 'storeRegister']);
     Route::post('/logout', [UserController::class, 'logout']);
+
+    Route::get('/', [UserController::class, 'index']);
+    Route::get('/create', [UserController::class, 'create']);
+    Route::get('/edit/{id}', [UserController::class, 'edit']);
+    Route::get('/delete/{id}', [UserController::class, 'destroy']);
+    Route::post('/store', [UserController::class, 'store']);
+    Route::post('/update/{id}', [UserController::class, 'update']);
 });
 
 Route::prefix('dashboard')->group(function () {
     Route::get('/', [DashboardController::class, 'index']);
 });
-
+Route::prefix('todocategory')->group(function () {
+    Route::get('/', [TodoCategoryController::class, 'index']);
+    Route::get('/create', [TodoCategoryController::class, 'create']);
+    Route::get('/edit/{id}', [TodoCategoryController::class, 'edit']);
+    Route::get('/delete/{id}', [TodoCategoryController::class, 'destroy']);
+    Route::post('/store', [TodoCategoryController::class, 'store']);
+    Route::post('/update/{id}', [TodoCategoryController::class, 'update']);
+});
 Route::prefix('todo')->group(function () {
     Route::get('/', [TodoController::class, 'index']);
     Route::get('/create', [TodoController::class, 'create']);
@@ -45,7 +61,6 @@ Route::prefix('todo')->group(function () {
     Route::post('/store', [TodoController::class, 'store']);
     Route::post('/update/{id}', [TodoController::class, 'update']);
 });
-
 Route::prefix('todolist')->group(function () {
     Route::get('/', [TodoListController::class, 'index']);
     Route::get('/delete/{id}', [TodoListController::class, 'destroy']);

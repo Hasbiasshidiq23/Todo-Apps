@@ -4,7 +4,7 @@
 
 @section('content')
 @if (Auth::check())
-            <h1>Welcome, {{ Auth::user()->name }}</h1>
+            <h1 style="color: white">Welcome, {{ Auth::user()->name }}</h1>
 
             @if (Auth::user()->group == "user")
                 <a href="todo">Todo</a>

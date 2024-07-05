@@ -26,7 +26,7 @@
                   <select class="form-select" name="todo_id" id="todo_id">
                     <option selected>Catatan</option>
                     @foreach ($todos as $value)
-                    <option value="{{$value->id}}">{{$value->title}}</option>
+                    <option value="{{$value->id}}">{{$value->id}}</option>
                     @endforeach
                   </select>
                 </div>

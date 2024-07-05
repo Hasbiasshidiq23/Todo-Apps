@@ -11,9 +11,9 @@
     <aside class="left-sidebar">
       <!-- Sidebar scroll-->
       <div>
-        <div class="brand-logo d-flex align-items-center justify-content-between">
+        <div class="brand-logo d-flex align-items-center justify-content-between" style="background-color: rgb(187, 187, 187)">
           <a href="./index.html" class="text-nowrap logo-img">
-            <img src="../assets/images/logos/dark-logo.svg" width="180" alt="" />
+            <img src="{{asset('assets/images/logos/dark-logo.svg')}}" width="180" alt="" />
           </a>
           <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
             <i class="ti ti-x fs-8"></i>
@@ -31,7 +31,7 @@
       <!--  Header Start -->
       @include('layouts.admin.header')
       <!--  Header End -->
-      <div class="container-fluid">
+      <div class="container-fluid" style="background: url(https://i.pinimg.com/originals/57/ca/98/57ca981288bb93099699264eed00dddd.jpg); background-attachment: fixed;">
         @yield('content')
         @include('layouts.admin.footer')
       </div>
